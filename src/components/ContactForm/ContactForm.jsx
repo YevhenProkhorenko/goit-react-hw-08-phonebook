@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { addContact } from 'redux/contacts/contactsOperations';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from '../ContactForm/ContactForm.module.scss';
@@ -9,7 +9,7 @@ import css from '../ContactForm/ContactForm.module.scss';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ export default function ContactForm() {
     }
     toast.success('Contact added')
     dispatch(addContact({ ...data })) && setName('');
-    setPhone('');;
+    setNumber('');;
   };
 
   const handleChange = e => {
@@ -37,8 +37,8 @@ export default function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;      
       default:
         return;
@@ -47,7 +47,7 @@ export default function ContactForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addConctacts({ name, phone });
+    addConctacts({ name, number });
     
   };
 
@@ -73,11 +73,11 @@ export default function ContactForm() {
         <input
           className={css.inputStyles}          
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={phone}
+          value={number}
           onChange={handleChange}
         />
       </div>

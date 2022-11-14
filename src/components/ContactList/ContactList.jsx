@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { removeContact } from 'redux/operations';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import { removeContact } from 'redux/contacts/contactsOperations';
+import { selectContacts, selectFilter } from 'redux/contacts/contactsSelectors';
 import css from '../ContactList/ContactList.module.scss';
 
 export default function ContactList() {

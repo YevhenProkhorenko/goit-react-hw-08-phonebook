@@ -1,0 +1,84 @@
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fetchContacts,
+  addContact,
+  removeContact,
+  updateContact,
+} from './contactsOperations';
+import { logOut } from 'redux/auth/authOperations';
+
+const initialState = {
+  contacts: [],
+  isLoading: false,
+  error: null,
+  filter: '',
+};
+
+export const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState,
+  reducers: {
+    filterContacts(store, { payload }) {
+      store.filter = payload;
+    },
+  },
+  extraReducers: {
+    [fetchContacts.pending]: store => {
+      store.isLoading = true;
+    },
+    [fetchContacts.fulfilled]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = null;
+      store.contacts = payload;
+    },
+    [fetchContacts.rejected]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = payload;
+    },
+    [addContact.pending]: store => {
+      store.isLoading = true;
+    },
+    [addContact.fulfilled]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = null;
+      store.contacts.push(payload);
+    },
+    [addContact.rejected]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = payload;
+    },
+
+    [removeContact.pending]: store => {
+      store.isLoading = true;
+    },
+    [removeContact.fulfilled]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = null;
+      const index = store.contacts.findIndex(
+        contact => contact.id === payload.id
+      );
+      store.contacts.splice(index, 1);
+    },
+    [removeContact.rejected]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = payload;
+    },
+    [updateContact.pending]: store => {
+      store.isLoading = true;
+    },
+    [updateContact.fulfilled]: (store, { payload }) => {
+      const index = store.contacts.findIndex(
+        contact => contact.id === payload.id
+      );
+      store.contacts[index] = payload;
+      store.isLoading = false;
+    },
+    [logOut.fulfilled](store) {
+      store.contacts = [];
+      store.isLoading = false;
+      store.error = null;
+    },
+  },
+});
+export const { filterContacts } = contactsSlice.actions;
+export default contactsSlice.reducer;
