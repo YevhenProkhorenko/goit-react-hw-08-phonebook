@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import selectUser from 'redux/auth/authSelectors';
+import { selectUser } from 'redux/auth/authSelectors';
 import { logOut } from 'redux/auth/authOperations';
 import css from '../UserMenu/UserMenu.module.scss';
 
