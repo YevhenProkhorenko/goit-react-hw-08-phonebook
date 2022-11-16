@@ -31,7 +31,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <h1 className={css.title}>Registration Page</h1>
       <form onSubmit={handleSubmit} className={css.form} autoComplete="on">
         <label className={css.label}>

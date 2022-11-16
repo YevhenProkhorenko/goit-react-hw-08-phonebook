@@ -27,7 +27,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <h1>Login page</h1>
 
       <form onSubmit={handleSubmit} className={css.form} autoComplete="on">

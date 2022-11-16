@@ -8,8 +8,8 @@ export default function UserMenu() {
   const dispatch = useDispatch();
 
   return (
-    <div display="flex" alignItems="center">
-      <p style={css.name}>Wellcome, {name}</p>
+    <div className={css.wrapper}>
+      <p className={css.name}>Wellcome, {name}</p>
       <button
         type="button"
         onClick={() => dispatch(logOut())}

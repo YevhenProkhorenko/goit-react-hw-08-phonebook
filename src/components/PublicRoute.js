@@ -8,6 +8,6 @@ export default function PublicRoute({
   component: Component,
 }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const redirect = isLoggedIn && restricted;
+  const redirect = isLoggedIn;
   return redirect ? <Navigate to={redirectTo} /> : Component;
 }

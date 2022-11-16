@@ -1,3 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .mainWrapper {
   display: flex;
   flex-direction: column;
@@ -7,11 +13,12 @@
   border: 1px solid #212121;
 }
 
-.title {
+.mainTitle {
   font-weight: 700;
   font-size: 36px;
   margin-bottom: 20px;
 }
-
-
-
+.title {
+  font-weight: 700;
+  font-size: 26px;
+}
