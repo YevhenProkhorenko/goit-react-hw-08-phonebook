@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[524],{524:function(e,o,t){t.r(o),t.d(o,{default:function(){return r}});t(791);var n="HomePage_wrapper__E+a96",a="HomePage_title__ygULj",c=t(184),r=function(){return(0,c.jsx)("div",{className:n,children:(0,c.jsx)("h1",{className:a,children:"To view contacts, log in to your account"})})}}}]);
+//# sourceMappingURL=524.603f47e3.chunk.js.map
