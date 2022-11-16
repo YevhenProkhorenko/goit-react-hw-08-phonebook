@@ -1,9 +1,9 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { removeContact } from 'redux/contacts/contactsOperations';
-import { selectContacts, selectFilter } from 'redux/contacts/contactsSelectors';
-import css from '../ContactList/ContactList.module.scss';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { removeContact } from "redux/contacts/contactsOperations";
+import { selectContacts, selectFilter } from "redux/contacts/contactsSelectors";
+import css from "../ContactList/ContactList.module.scss";
 
 export default function ContactList() {
   const contacts = useSelector(selectContacts);
@@ -16,7 +16,7 @@ export default function ContactList() {
     }
     const normilizedFilter = filter.toLowerCase();
 
-    const filteredContacts = contacts.filter(contact => {
+    const filteredContacts = contacts.filter((contact) => {
       const normilizeName = contact.name.toLowerCase();
 
       const result = normilizeName.includes(normilizedFilter);
@@ -26,17 +26,17 @@ export default function ContactList() {
     return filteredContacts;
   };
 
-  const deleteContact = id => {
-    dispatch(removeContact(id))
-    toast.info('Contact deleted')
-  }
+  const deleteContact = (id) => {
+    dispatch(removeContact(id));
+    toast.info("Contact deleted");
+  };
 
   const filteredContactsList = filteredContacts();
 
-  const elements = filteredContactsList.map(contact => {
+  const elements = filteredContactsList.map((contact) => {
     return (
       <li key={contact.id} className={css.contactList}>
-        {contact.name}: {contact.phone}
+        {contact.name}: {contact.number}
         <button
           className={(css.submitButton, css.deleteButton)}
           onClick={() => deleteContact(contact.id)}
@@ -48,7 +48,7 @@ export default function ContactList() {
   });
   return (
     <div>
-      <ul className={css.labelText}>{elements.length === 0 ? '' : elements}</ul>
+      <ul className={css.labelText}>{elements.length === 0 ? "" : elements}</ul>
     </div>
   );
 }
