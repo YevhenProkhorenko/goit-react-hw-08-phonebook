@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from '../RegisterPage/RegisterPage.module.scss';
 
 export default function RegisterPage() {
@@ -24,6 +26,7 @@ export default function RegisterPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    toast.success('Account register');
     dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
@@ -62,6 +65,7 @@ export default function RegisterPage() {
         <button type="submit" className={css.submitButton}>
           Register
         </button>
+        <ToastContainer autoClose={1000} theme="colored" />
       </form>
     </div>
   );

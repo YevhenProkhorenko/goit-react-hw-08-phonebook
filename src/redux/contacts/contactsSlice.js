@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  addContact,
-  removeContact,
-  updateContact,
-} from './contactsOperations';
+import { fetchContacts, addContact, removeContact } from './contactsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
 const initialState = {
@@ -62,16 +57,6 @@ export const contactsSlice = createSlice({
     [removeContact.rejected]: (store, { payload }) => {
       store.isLoading = false;
       store.error = payload;
-    },
-    [updateContact.pending]: store => {
-      store.isLoading = true;
-    },
-    [updateContact.fulfilled]: (store, { payload }) => {
-      const index = store.contacts.findIndex(
-        contact => contact.id === payload.id
-      );
-      store.contacts[index] = payload;
-      store.isLoading = false;
     },
     [logOut.fulfilled](store) {
       store.contacts = [];
