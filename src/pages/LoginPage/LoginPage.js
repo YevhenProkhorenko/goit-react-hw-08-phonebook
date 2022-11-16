@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from '../LoginPage/LoginPage.module.scss';
 
 export default function LoginPage() {
@@ -21,9 +23,8 @@ export default function LoginPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    toast.success('Log in is success');
     dispatch(logIn({ email, password }));
-    setEmail('');
-    setPassword('');
   };
 
   return (
@@ -54,6 +55,7 @@ export default function LoginPage() {
         <button type="submit" className={css.submitButton}>
           LogIn
         </button>
+        <ToastContainer autoClose={1000} theme="colored" />
       </form>
     </div>
   );

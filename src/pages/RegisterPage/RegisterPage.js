@@ -28,9 +28,6 @@ export default function RegisterPage() {
     e.preventDefault();
     toast.success('Account register');
     dispatch(register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
   };
 
   return (

@@ -6,6 +6,7 @@ import { selectIsRefreshingUser } from 'redux/auth/authSelectors';
 import AppBar from './AppBar/AppBar';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import css from './App.module.scss';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -21,7 +22,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <h1>Refreshing user...</h1>
+    <h1 className={css.tittle}>Refreshing user...</h1>
   ) : (
     <>
       <AppBar />
