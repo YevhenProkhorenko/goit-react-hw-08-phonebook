@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from '../LoginPage/LoginPage.module.scss';
 
@@ -23,7 +23,6 @@ export default function LoginPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    toast.success('Log in is success');
     dispatch(logIn({ email, password }));
   };
 

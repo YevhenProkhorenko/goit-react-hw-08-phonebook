@@ -1,6 +1,6 @@
 import { Suspense, useEffect, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { selectIsRefreshingUser } from 'redux/auth/authSelectors';
 import AppBar from './AppBar/AppBar';
@@ -55,6 +55,7 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<Phonebook />} />
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </>

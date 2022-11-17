@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from '../RegisterPage/RegisterPage.module.scss';
 
@@ -26,7 +26,6 @@ export default function RegisterPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    toast.success('Account register');
     dispatch(register({ name, email, password }));
   };
 
